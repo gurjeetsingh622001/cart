@@ -6,18 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
-{
-    option.ExpireTimeSpan = TimeSpan.FromSeconds(60);
-    option.LoginPath = "/Account/Login";
-    option.AccessDeniedPath = "/Account/Login";
-});
+builder.Services.AddSession();
 builder.Services.AddSession(option =>
 {
-    option.IdleTimeout = TimeSpan.FromMinutes(1);
-    option.Cookie.HttpOnly = true;
-    option.Cookie.IsEssential = true;
-
+    option.IdleTimeout = TimeSpan.FromMinutes(60);
 });
 
 //db
@@ -40,9 +32,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
-app.UseAuthentication();
-
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

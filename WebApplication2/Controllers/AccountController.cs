@@ -64,6 +64,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public IActionResult Login(UserLoginModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 var user = context.Users.Where(e => e.Email == model.Email).FirstOrDefault();
@@ -72,12 +73,9 @@ namespace WebApplication2.Controllers
                     bool isCredentialTrue = (user.Password == model.Password);
                     if (isCredentialTrue)
                     {
-                        var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.Name) }, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var principal = new ClaimsPrincipal(identity);
-                        HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        HttpContext.Session.SetString("Name", model.Email);
+                        HttpContext.Session.SetString("Email", model.Email);
+                        TempData["SessionId"] = HttpContext.Session.Id;
                         return RedirectToAction("Index", "Employee");
-                        return View(model);
                     }
                     else
                     {
@@ -105,7 +103,7 @@ namespace WebApplication2.Controllers
         }
         public IActionResult Logout()
         {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("Email");
             return RedirectToAction("Login");
         }
     }

@@ -32,18 +32,28 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Student</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ImageUpload" asp-action="Upload">Upload</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ImageUpload" asp-action="getImages">Images</a>
                         </li>
                     </ul>
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="nav-bar">
-                        <span style="margin-right:10px;">Welecome</span><span class="" style="margin-right: 10px;color: aqua;font-weight: 900;">@User.Identity.Name</span><a class="btn btn-secondary" asp-controller="Account" asp-action="Logout">Logout</a>
-                    </div>
+                @using Microsoft.AspNetCore.Http
+                @{
+                    var httpContext = Context.Request.HttpContext;
+                    @if (httpContext.Session.GetString("Email") != null)
+                    {
+                        <div class="nav-bar">
+                            <span style="margin-right:10px;">Welecome</span><span class="" style="margin-right: 10px;color: aqua;font-weight: 900;">@httpContext.Session.GetString("Email")</span><a class="btn btn-secondary" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </div>
+                    }
                 }
             </div>
         </nav>

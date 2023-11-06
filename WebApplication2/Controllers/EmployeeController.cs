@@ -5,7 +5,6 @@ using WebApplication2.NewFolder;
 
 namespace WebApplication2.Controllers
 {
-    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly ApplicationContext context;
