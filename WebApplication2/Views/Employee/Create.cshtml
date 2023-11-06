@@ -1,0 +1,47 @@
+﻿@model WebApplication2.Models.Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-align-content-center text-primary">
+                        Add Employee
+                    </h1>
+                    <form method="post" asp-action="Create">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" asp-for="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="form-label">Gender</label>
+                            <input type="text" class="form-control" asp-for="Gender">
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input type="email" class="form-control" asp-for="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Country" class="form-label">Country</label>
+                            <input type="text" class="form-control" asp-for="Country">
+                            <span asp-validation-for="Country" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication2.Models.Employee>
+<div class="container">
+ <div class="row">
+  <div class="col-8 offset-2">
+   <h1 class="text-center text-primary"> Employee Record </h1>
+   <h4 class="text-center text-primary">@TempData["message"]</h4>
+   <a class="btn btn-small btn-primary m-1" asp-controller="Employee" asp-action="Create">Create</a>
+     <table class="table table-bordered">
+      <tr class="text-center">
+             <th>Id</th>
+             <th>Name</th>
+             <th>Gender</th>
+             <th>Email</th>
+             <th>Country</th>
+             <th>Edit</th>
+             <th>Delete</th>
+      </tr>
+
+       @foreach(var d in Model)
+        {
+         <tr>
+             <td>@d.Id</td>
+             <td>@d.Name</td>
+             <td>@d.Gender</td>
+             <td>@d.Email</td>
+             <td>@d.Country</td>
+             <td>
+                 <a class="btn btn-sm btn-secondary" asp-action="Edit" asp-controller="Employee" asp-route-id="@d.Id">Edit</a>
+             </td>
+             <td>
+                 <a class="btn btn-sm btn-danger"  asp-action="Delete" asp-controller="Employee" asp-route-id="@d.Id">Delete</a>
+             </td>
+         </tr>               
+        }
+
+     </table>
+  </div> 
+ </div>
+</div>

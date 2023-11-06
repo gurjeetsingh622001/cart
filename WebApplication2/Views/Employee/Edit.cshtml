@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@model WebApplication2.Models.Employee
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-align-content-center text-primary">
+                        Edit Employee
+                    </h1>
+                    <form method="post" asp-action="EditProceed">
+
+                         <div class="mb-3 hidden">
+                            <label asp-for="Id" class="form-label">Id</label>
+                            <input type="text" class="form-control" asp-for="Id" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" asp-for="Name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="form-label">Gender</label>
+                            <input type="text" class="form-control" asp-for="Gender" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input type="text" class="form-control" asp-for="Email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Country" class="form-label">Country</label>
+                            <input type="text" class="form-control" asp-for="Country" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

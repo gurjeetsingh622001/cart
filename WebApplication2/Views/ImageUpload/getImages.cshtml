@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplication2.Models.Image>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary"> Images</h1>
+            <h4 class="text-center text-primary">@TempData["message"]</h4>
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                </tr>
+
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>@d.Id</td>
+                        <td>@d.Name</td>
+                        <td><img src="/@d.ImagePath" height="100px" width="100px" /></td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
