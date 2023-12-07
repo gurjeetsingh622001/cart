@@ -27,7 +27,7 @@ namespace WebApplication2.Controllers
             var id = user.Id;
             if (loggedInUserEmail != null)
             {
-                var products =  _context.Cart.Where(x => x.UserId == id).ToList();
+                var products =  _context.Cart.Where(x => x.UserId == id).Include(x=>x.Product).ToList();
                 return View(products);
 
             }

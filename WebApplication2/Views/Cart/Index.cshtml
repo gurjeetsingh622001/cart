@@ -13,29 +13,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                Product Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductId)
+                Quantity
             </th>
-            <th></th>
+            <th>
+                Price
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.price)
+                </td>
+                <td>
+                    <a asp-action="RemoveFromCart" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+        }
     </tbody>
 </table>
